@@ -23,10 +23,23 @@ const screenTop = (gif: string) => {
             </View>
             <View style={styles.btn} />
             <View style={styles.lines}>
-                <View style={styles.line} />
-                <View style={styles.line} />
-                <View style={styles.line} />
+                <View style={{
+                    height: 5,
+                    marginBottom: 5,
+                    backgroundColor: "black"
+                }} />
+                <View style={{
+                    height: 5,
+                    marginBottom: 5,
+                    backgroundColor: "black"
+                }} />
+                <View style={{
+                    height: 5,
+                    marginBottom: 5,
+                    backgroundColor: "black"
+                }} />
             </View>
+            <View style={styles.t} />
         </View>
     )
 }

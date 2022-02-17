@@ -12,7 +12,7 @@ const ScreenTopStyles = StyleSheet.create({
     btn: {
         position: "absolute",
         top: "85%",
-        left: 25,
+        left: 80,
         height: 35,
         width: 35,
         borderRadius: 100,
@@ -21,7 +21,7 @@ const ScreenTopStyles = StyleSheet.create({
     inner: {
         position: "absolute",
         top: 25,
-        left: 20,
+        left: 25,
         height: "70%",
         width: "90%",
         borderRadius: 20,
@@ -37,12 +37,6 @@ const ScreenTopStyles = StyleSheet.create({
         right: 50,
         width: 100,
         height: 100
-    },
-    line: {
-        height: 5,
-        marginBottom: 5,
-        backgroundColor: "black",
-        borderRadius: 5
     },
     t: {
         position: "absolute",
