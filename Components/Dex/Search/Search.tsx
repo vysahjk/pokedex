@@ -99,7 +99,7 @@ const Search = (props: ISearchProps) => {
                     placeholder={"Search pokemon by name or type"}
                 />
 
-                <View style={{position: "relative", paddingLeft: 25, margin: 5}}>
+                <View style={{position: "relative", paddingLeft: 30, margin: 5}}>
                     <FontAwesomeIcon style={{
                         position: "absolute",
                         top: 0,
@@ -112,7 +112,7 @@ const Search = (props: ISearchProps) => {
                     position: "relative",
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    paddingLeft: 25,
+                    paddingLeft: 30,
                     margin: 5
                 }}>
                     <FontAwesomeIcon style={{
