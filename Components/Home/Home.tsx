@@ -57,12 +57,11 @@ const Home = ({navigation}: HomeProps) => {
 
             <PokeBall />
 
-            <View style={{marginBottom: 250, width: 200}}>
+            <View style={{marginBottom: "10%", width: 200}}>
                 <TouchableOpacity
                     style={{
-                        margin: "auto",
+                        margin: "50px auto",
                         height: 50,
-                        width: "80%",
                         backgroundColor: startDisabled? "white": "#D25B70",
                         alignItems: 'center',
                         justifyContent: 'center',
