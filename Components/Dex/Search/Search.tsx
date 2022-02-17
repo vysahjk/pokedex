@@ -99,20 +99,20 @@ const Search = (props: ISearchProps) => {
                     placeholder={"Search pokemon by name or type"}
                 />
 
-                <View style={{position: "relative", paddingLeft: 30, margin: 5}}>
+                <View style={{position: "relative", paddingLeft: 25, margin: 5}}>
                     <FontAwesomeIcon style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         height: "100%"
                     }} icon={faListOl}/>
-                    <Text style={{fontWeight: "bold"}}>Count: {pokes.length}</Text>
+                    <Text style={{fontWeight: "bold"}}>Count: {pokes.length} (scroll to discover more pokemon...)</Text>
                 </View>
                 <View style={{
                     position: "relative",
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    paddingLeft: 30,
+                    paddingLeft: 25,
                     margin: 5
                 }}>
                     <FontAwesomeIcon style={{
