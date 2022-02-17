@@ -69,7 +69,7 @@ const Dex = ({route, navigation}: DexProps) => {
                     fontWeight: "bold",
                     fontSize: 20,
                     textAlign: "center",
-                    marginBottom: 20
+                    margin: 10
                 }}>Pokédex de {route.params.userName}</Text>
             </View>
 

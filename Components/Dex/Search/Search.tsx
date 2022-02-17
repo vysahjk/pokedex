@@ -106,7 +106,7 @@ const Search = (props: ISearchProps) => {
                         left: 0,
                         height: "100%"
                     }} icon={faListOl}/>
-                    <Text style={{fontWeight: "bold"}}>Count: {pokes.length} (scroll to discover more pokemon...)</Text>
+                    <Text style={{fontWeight: "bold"}}>Count: {pokes.length}</Text>
                 </View>
                 <View style={{
                     position: "relative",
