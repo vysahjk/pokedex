@@ -51,6 +51,9 @@ const Card = (props: ICardProps) => {
         props.checked()
     }
 
+    if(!pokemon){
+        return <></>
+    }
     return (
         <View ref={props.last} style={[styles.container, {display: props.filterByCaptured ? pokemon?.captured ? "flex": "none" : "flex"}]}>
             <View style={styles.cardImage}>

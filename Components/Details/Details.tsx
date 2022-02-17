@@ -25,6 +25,9 @@ const Details = ({route, navigation}: DetailsProps) => {
         })()
     }, [])
 
+    if(!detailPokemon?.extendedProps){
+        return <></>
+    }
     return (
         <View style={{
             height: "100%",
