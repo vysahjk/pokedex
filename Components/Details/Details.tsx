@@ -2,16 +2,18 @@ import * as React from "react";
 import {View, Button} from "react-native";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {IPokemon} from "../Interfaces/Interfaces";
 import {fetchPokemonBy} from "../Service/FetchPokemonBy";
 import useNavigation from "../Navigation/Navigation";
 import screenTop from "./ScreenTop/ScreenTop";
 import DisplayField from "./DisplayField/DisplayField";
+import {IMainContext, mainContext} from "../Context/MainContext";
 
 type DetailsProps = StackScreenProps<RootParamList, 'Details'>
 
 const Details = ({route, navigation}: DetailsProps) => {
+    const context = useContext<IMainContext>(mainContext)
     const {goTo} = useNavigation()
     const goToPage = (page: string) => {
         goTo(navigation, page, {})
@@ -21,7 +23,7 @@ const Details = ({route, navigation}: DetailsProps) => {
     useEffect(() => {
         (async () => {
             const {data: next} = await fetchPokemonBy("pokemon-species", route.params.pokemon.name)
-            setDetailPokemon(route.params.pokemon.setExtendedProps(next as any))
+            setDetailPokemon(route.params.pokemon.setExtendedProps(next as any, context.lang))
         })()
     }, [])
 
@@ -39,7 +41,7 @@ const Details = ({route, navigation}: DetailsProps) => {
             <View style={{marginBottom: 10, width: "100%"}}>
                 <Button
                     color={"#dd6b4d"}
-                    title={"Go back to list"}
+                    title={context.translation('GoBalToList')}
                     onPress={() => goToPage("PokeDex")}/>
             </View>
 
@@ -62,7 +64,7 @@ const Details = ({route, navigation}: DetailsProps) => {
                         borderWidth: 1,
                         textTransform: "capitalize"
                     }}
-                    title={"Name:"}
+                    title={context.translation('Name')}
                     field={detailPokemon?.name as string} />
 
                 <DisplayField
@@ -72,15 +74,15 @@ const Details = ({route, navigation}: DetailsProps) => {
                         fontWeight: "bold",
                         textAlign: "center"
                     }}
-                    title={"Description:"}
+                    title={context.translation('Description')}
                     field={detailPokemon?.extendedProps.description as string} />
 
                 <DisplayField
-                    title={"Happiness Rate:"}
+                    title={context.translation('Happiness')}
                     field={detailPokemon?.extendedProps.base_happiness as number} />
 
                 <DisplayField
-                    title={"Habitat:"}
+                    title={context.translation('Habitat')}
                     field={detailPokemon?.extendedProps.habitat.name as string} />
 
             </View>

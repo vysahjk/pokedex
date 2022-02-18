@@ -4,9 +4,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faListOl, faFilter} from '@fortawesome/free-solid-svg-icons'
 import {BehaviorSubject} from "rxjs"
 import {map} from 'rxjs/operators'
-import {ReactNode, useEffect, useRef, useState} from "react"
+import {ReactNode, useContext, useEffect, useRef, useState} from "react"
 import {IPokemon} from "../../Interfaces/Interfaces"
 import {styles} from './SearchStyles'
+import {IMainContext, mainContext} from "../../Context/MainContext";
 
 interface ISubject {
     list: Array<IPokemon>
@@ -36,6 +37,7 @@ type ISearchProps = {
     children: (pokes: Array<IPokemon>, filterByCaptured: boolean) => ReactNode
 }
 const Search = (props: ISearchProps) => {
+    const context = useContext<IMainContext>(mainContext)
     const animationCapturedNumber = useRef(new Animated.Value(1)).current
     const [filterByCaptured, setFilterByCaptured] = useState<boolean>(false)
     const [pokes, setPokes] = useState<Array<IPokemon>>([])
@@ -96,7 +98,7 @@ const Search = (props: ISearchProps) => {
                     style={styles.InputText}
                     value={search}
                     onChangeText={onSearch}
-                    placeholder={"Search pokemon by name or type"}
+                    placeholder={context.translation('SearchPlaceholder')}
                 />
 
                 <View style={{position: "relative", paddingLeft: 30, margin: 5}}>
@@ -106,7 +108,7 @@ const Search = (props: ISearchProps) => {
                         left: 0,
                         height: "100%"
                     }} icon={faListOl}/>
-                    <Text style={{fontWeight: "bold"}}>Count: {pokes.length}</Text>
+                    <Text style={{fontWeight: "bold"}}>{context.translation('CountLabel')}: {pokes.length}</Text>
                 </View>
                 <View style={{
                     position: "relative",
@@ -122,7 +124,7 @@ const Search = (props: ISearchProps) => {
                         height: "100%"
                     }} icon={faListOl}/>
                     <View>
-                        <Text style={{fontWeight: "bold"}}>Captured: {<Animated.View
+                        <Text style={{fontWeight: "bold"}}>{context.translation('CapturedLabel')}: {<Animated.View
                             style={{
                                 transform: [{ scale: animationCapturedNumber }],
                             }}>
@@ -134,7 +136,7 @@ const Search = (props: ISearchProps) => {
                             position: "relative",
                             marginRight: 30,
                             color: filterByCaptured ? "green" : "black"
-                        }}>filter all captured</Text>
+                        }}>{context.translation('FilterLabel')}</Text>
                         <FontAwesomeIcon style={{
                             position: "absolute",
                             cursor: "pointer",

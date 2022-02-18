@@ -66,7 +66,7 @@ export class Pokemon implements IPokemon {
             url: string
         }
     }
-    setExtendedProps: (data?: any) => this
+    setExtendedProps: (data?: any, locale?: string) => this
 
     constructor(data? : any) {
         this.id = 0
@@ -82,13 +82,14 @@ export class Pokemon implements IPokemon {
             }
         }
 
-        this.setExtendedProps = (data?: any) => {
+        this.setExtendedProps = (data?: any, locale?: string) => {
+            const description = data['flavor_text_entries'].find((item: any) => item['language'].name == locale?.trim() ?? "en")?.flavor_text as string
             this.extendedProps = Object.create(this.extendedProps, {
                 base_happiness: {
                     value: data.base_happiness
                 },
                 description: {
-                    value: data['flavor_text_entries'][0]['flavor_text'].replace("\n", " ")
+                    value: description.replaceAll("\n", "")
                 },
                 habitat: {
                     value: data.habitat

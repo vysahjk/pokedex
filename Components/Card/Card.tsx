@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {ReactNode, useEffect, useState} from 'react';
+import {ReactNode, useContext, useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IPokemon} from '../Interfaces/Interfaces';
@@ -8,6 +8,7 @@ import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import {fetchPokemonBy} from "../Service/FetchPokemonBy";
 import {Pokemon} from '../Models/Pokemon';
 import styles from './CardStyles'
+import {IMainContext, mainContext} from "../Context/MainContext";
 
 export interface ICardProps {
     checked: () => void
@@ -18,6 +19,7 @@ export interface ICardProps {
 }
 
 const Card = (props: ICardProps) => {
+    const context = useContext<IMainContext>(mainContext)
     const goToDetails = () => {
         props.selected(pokemon as IPokemon)
     }
@@ -28,7 +30,7 @@ const Card = (props: ICardProps) => {
         checkCaptured
     } = useStockPokemon()
 
-    const [pokemon, setPokemon] = useState<IPokemon|undefined>(undefined)
+    const [pokemon, setPokemon] = useState<IPokemon | undefined>(undefined)
     useEffect(() => {
         (async () => {
             const {data: next} = await fetchPokemonBy("pokemon", props.pokemon.name)
@@ -51,11 +53,16 @@ const Card = (props: ICardProps) => {
         props.checked()
     }
 
-    if(!pokemon){
+    if (!pokemon) {
         return <></>
     }
     return (
-        <View ref={props.last} style={[styles.container, {display: props.filterByCaptured ? pokemon?.captured ? "flex": "none" : "flex"}]}>
+        <View ref={props.last}
+              style={[
+                  styles.container, {
+                      display: props.filterByCaptured ? pokemon?.captured ? "flex" : "none" : "flex"
+                  }]
+              }>
             <View style={styles.cardImage}>
                 <TouchableOpacity
                     style={[styles.pokemonNumber, {
@@ -86,7 +93,7 @@ const Card = (props: ICardProps) => {
             <View>
                 <Text style={styles.text}>{props.pokemon.name}</Text>
                 <div>
-                    <Text>Type(s):</Text>
+                    <Text>{context.translation('TypePokemon')}:</Text>
                     {pokemon?.types.map((type, i: number) => {
                         return (<li style={{marginLeft: 15}} key={i}>{type.name}</li>)
                     })}

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
 import {StackScreenProps} from "@react-navigation/stack";
 import {BehaviorSubject} from 'rxjs'
@@ -9,6 +9,8 @@ import useNavigation from "../Navigation/Navigation";
 import PokeBall from "./PokeBall/PokeBall";
 import logo from '../../assets/logo.png'
 import styles from './HomeStyles'
+import Dropdown from "./Dropdown/Dropdown";
+import {IMainContext, mainContext} from "../Context/MainContext";
 
 type HomeProps = StackScreenProps<RootParamList, 'Home'>
 const nameSubject = new BehaviorSubject<string>("")
@@ -16,6 +18,7 @@ const nameObservable = nameSubject.pipe(
     filter(val => val.trim().length > 4)
 )
 const Home = ({navigation}: HomeProps) => {
+    const context = useContext<IMainContext>(mainContext)
 
     // Navigation
     const {goTo} = useNavigation()
@@ -43,16 +46,17 @@ const Home = ({navigation}: HomeProps) => {
 
     return (
         <View style={styles.container}>
+            <Dropdown items={['en', 'fr', 'es']} />
             <View style={styles.header}>
                 <Image
                     source={logo}
                     style={styles.ImageLogo}
                 />
-                <Text style={{margin: 20, fontSize: 16}}>Welcome to your new pokeDex</Text>
+                <Text style={{margin: 20, fontSize: 16}}>{context.translation('Welcome')}</Text>
                 <TextInput
                     style={styles.InputText}
                     onChangeText={onChangeName}
-                    placeholder={"Please enter your name"}/>
+                    placeholder={context.translation('LabelInputName')}/>
             </View>
 
             <PokeBall />
@@ -67,7 +71,7 @@ const Home = ({navigation}: HomeProps) => {
                         borderRadius: 10,
                     }}
                     disabled={startDisabled}
-                    onPress={goToDesk}><Text style={{color: startDisabled? "black": "white"}}>START</Text></TouchableOpacity>
+                    onPress={goToDesk}><Text style={{color: startDisabled? "black": "white"}}>{context.translation('Start')}</Text></TouchableOpacity>
             </View>
         </View>)
 }
