@@ -82,7 +82,7 @@ const Dex = ({route, navigation}: DexProps) => {
                             {pokes.map((poke: any, i: number) => {
                                 if (pokes.length >=10 && listPokemon.length === (i + 1)) {
                                     return <Card
-                                        key={i}
+                                        key={poke.name}
                                         pokemon={poke}
                                         checked={onChecked}
                                         selected={onSelectPokemon}
@@ -91,7 +91,7 @@ const Dex = ({route, navigation}: DexProps) => {
                                     />
                                 } else {
                                     return <Card
-                                        key={i}
+                                        key={poke.name}
                                         checked={onChecked}
                                         filterByCaptured={filterByCaptured}
                                         selected={onSelectPokemon}
