@@ -2,6 +2,8 @@ import {ReactChild, ReactFragment} from "react";
 
 export interface ITranslateContext {
     lang: string
+    userName: string
+    setUserName: (userName: string) => void
     setMessages: (lang: keyof ITranslations) => void
     translation: (id: keyof ITranslation) => string
 }

@@ -15,7 +15,7 @@ const Details = ({route, navigation}: DetailsProps) => {
     const context = useContext<ITranslateContext>(mainContext)
     const {goTo} = useNavigation()
     const goToPage = (page: string) => {
-        goTo(navigation, page, {})
+        goTo(navigation, page, { userName: context.userName })
     }
 
     const [detailPokemon, setDetailPokemon] = useState<IPokemon | undefined>(undefined)

@@ -25,11 +25,10 @@ const Home = ({navigation}: HomeProps) => {
     // Navigation
     const {goTo} = useNavigation()
     const goToDesk = () => {
-        goTo(navigation, "PokeDex", {userName: name})
+        goTo(navigation, "PokeDex", {userName: context.userName })
     }
 
     // Logic use name
-    const [name, setName] = useState<string>("")
     const [startDisabled, setStartDisabled] = useState<boolean>(true)
     useEffect(() => {
         const subscription = nameObservable.subscribe(_ => {
@@ -43,7 +42,7 @@ const Home = ({navigation}: HomeProps) => {
     const onChangeName = (name: string) => {
         if (!name || name.length <= 4) setStartDisabled(true)
         nameSubject.next(name)
-        setName(name)
+        context.setUserName(name)
     }
 
     return (
