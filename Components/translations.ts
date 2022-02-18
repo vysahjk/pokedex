@@ -7,7 +7,7 @@ const translations: ITranslations = {
         "it": "🇮🇹 Italian",
         "es": "🇪🇸 Spanish",
         "Welcome": "Welcome to your new pokeDex",
-        "LabelInputName": "Please enter your name",
+        "LabelInputName": "* Please enter your name",
         "Start": "Start",
         "GoBack": "Go back",
         "GoBalToList": "Go back to list",
@@ -28,7 +28,7 @@ const translations: ITranslations = {
         "it": "🇮🇹 Italien",
         "es": "🇪🇸 Espagnol",
         "Welcome": "Bienvenue à ton nouveau pokeDex",
-        "LabelInputName": "Veuillez saisir votre nom",
+        "LabelInputName": "* Veuillez saisir votre nom",
         "Start": "Démarrez",
         "GoBack": "Retourner",
         "GoBalToList": "Retourner à la liste",
@@ -49,7 +49,7 @@ const translations: ITranslations = {
         "it": "🇮🇹 Italiano",
         "es": "🇪🇸 Spagnolo",
         "Welcome": "Benvenuto nel tuo nuovo pokeDex",
-        "LabelInputName": "Inserisci il tuo nome",
+        "LabelInputName": "* Inserisci il tuo nome",
         "Start": "Iniziare",
         "GoBack": "Torna indietro",
         "GoBalToList": "Torna alla lista",
@@ -70,7 +70,7 @@ const translations: ITranslations = {
         "it": "🇮🇹 Italiano",
         "es": "🇪🇸 Español",
         "Welcome": "Bienvenido a tu nuevo pokeDex",
-        "LabelInputName": "Ingresa tu nombre por favor",
+        "LabelInputName": "* Ingresa tu nombre por favor",
         "Start": "Comenzar",
         "GoBack": "Regresar a Home",
         "GoBalToList": "Regresar a la lista",
@@ -84,7 +84,7 @@ const translations: ITranslations = {
         "Description": "Descripción",
         "Happiness": "Tasa de felicidad",
         "Habitat": "Habitad",
-    },
+    }
 }
 
 export {
