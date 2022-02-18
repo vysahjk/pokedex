@@ -12,7 +12,8 @@ const DisplayField = (props: IDisplayField) => {
                 <Text
                     style={{
                         textTransform: "capitalize",
-                        fontSize: 16
+                        fontSize: 16,
+                        fontWeight: "bold"
                     }}
                 >{props.title} </Text>
             </View>
