@@ -24,10 +24,10 @@ const Dropdown = (props: IDropdown) => {
                 borderRadius: 5,
                 position: "relative"
             }} name={"lang"} id={"lang"} onChange={onChangeLang}>
-                {props.items.map((item: string) => {
-                    return <option key={item} style={{
+                {props.items.map((item: string | keyof ITranslations) => {
+                    return <option key={item.toString()} style={{
                         position: "absolute"
-                    }} value={item.trim()}>{item.trim()}</option>
+                    }} value={item.toString()}>{context.translation( `${item as keyof ITranslations}`)}</option>
                 })}
             </select>
         </View>

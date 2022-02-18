@@ -1,3 +1,5 @@
+import {ITranslations} from "../../Interfaces/SharedInterfaces";
+
 export interface IDropdown {
-    items: Array<string>
+    items: Array<string | keyof ITranslations>
 }

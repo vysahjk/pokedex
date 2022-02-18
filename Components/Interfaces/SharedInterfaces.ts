@@ -11,6 +11,10 @@ export interface ITranslateComponent {
 }
 
 export interface ITranslation {
+    en: string
+    fr: string
+    it: string
+    es: string
     Welcome: string
     LabelInputName: string
     Start: string
@@ -31,6 +35,7 @@ export interface ITranslation {
 export interface ITranslations {
     en: ITranslation
     fr: ITranslation
+    it: ITranslation
     es: ITranslation
 }
 
