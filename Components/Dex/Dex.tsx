@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {ActivityIndicator, Button, Text, View} from 'react-native';
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
 import {IPokemon} from "../Interfaces/Interfaces";
@@ -9,9 +9,11 @@ import useNavigation from "../Navigation/Navigation";
 import Search from "./Search/Search";
 import Card from "../Card/Card";
 import styles from './DexStyles'
+import {IMainContext, mainContext} from "../Context/MainContext";
 
 type DexProps = StackScreenProps<RootParamList, 'PokeDex'>
 const Dex = ({route, navigation}: DexProps) => {
+    const context = useContext<IMainContext>(mainContext)
 
     // Navigation
     const {goTo} = useNavigation()
@@ -61,7 +63,7 @@ const Dex = ({route, navigation}: DexProps) => {
                 <View style={{margin: "auto", marginBottom: 10, width: "100%"}}>
                     <Button
                         color={"#dd6b4d"}
-                        title={"Go back"}
+                        title={context.translation('GoBack')}
                         onPress={() => gotTo("Home")}/>
                 </View>
                 <Text style={{
@@ -70,7 +72,7 @@ const Dex = ({route, navigation}: DexProps) => {
                     fontSize: 20,
                     textAlign: "center",
                     margin: 10
-                }}>Pokédex de {route.params.userName}</Text>
+                }}>{context.translation('TitleDex')} {route.params.userName}</Text>
             </View>
 
             <View style={{width: "90%"}}>
