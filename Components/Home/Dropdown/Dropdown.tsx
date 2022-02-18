@@ -1,14 +1,11 @@
 import {View} from "react-native";
 import {ChangeEvent, useContext, useState} from "react";
-import {IMainContext, mainContext} from "../../Context/MainContext";
-import {ITranslations} from "../../translations";
-
-interface IDropdown {
-    items: Array<string>
-}
+import {mainContext} from "../../Context/TranslateContext";
+import {ITranslateContext, ITranslations} from "../../Interfaces/SharedInterfaces";
+import {IDropdown} from "./Interfaces";
 
 const Dropdown = (props: IDropdown) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
 
     const [, setLang] = useState<string>("en")
     const onChangeLang = (e: ChangeEvent<HTMLSelectElement>) => {

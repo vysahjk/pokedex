@@ -3,17 +3,17 @@ import {ActivityIndicator, Button, Text, View} from 'react-native';
 import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
-import {IPokemon} from "../Interfaces/Interfaces";
+import {IPokemon, ITranslateContext} from "../Interfaces/SharedInterfaces";
 import fetchAllPokemon from "../Service/FetchAllPokemon";
 import useNavigation from "../Navigation/Navigation";
 import Search from "./Search/Search";
 import Card from "../Card/Card";
 import styles from './DexStyles'
-import {IMainContext, mainContext} from "../Context/MainContext";
+import {mainContext} from "../Context/TranslateContext";
 
 type DexProps = StackScreenProps<RootParamList, 'PokeDex'>
 const Dex = ({route, navigation}: DexProps) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
 
     // Navigation
     const {goTo} = useNavigation()

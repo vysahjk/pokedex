@@ -1,9 +1,8 @@
 import {useCallback, useState} from "react";
-import {IPokemon} from "../Interfaces/Interfaces";
+import {IPokemon} from "../Interfaces/SharedInterfaces";
 
 const useStockPokemon = () => {
     const [capture, setCapture] = useState<boolean>(false)
-
     const setPokemonInStorage = useCallback((poke: IPokemon) => {
         let pokes = JSON.parse(sessionStorage.getItem("pokes") ?? JSON.stringify([]))
 

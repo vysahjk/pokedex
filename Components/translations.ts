@@ -1,27 +1,4 @@
-export interface ITranslation {
-    Welcome: string
-    LabelInputName: string
-    Start: string
-    GoBack: string
-    GoBalToList: string
-    TitleDex: string
-    CountLabel: string
-    CapturedLabel: string
-    TypePokemon: string
-    FilterLabel: string
-    SearchPlaceholder: string
-    Name: string
-    Description: string
-    Happiness: string
-    Habitat: string
-}
-
-export interface ITranslations {
-
-    en: ITranslation
-    fr: ITranslation
-    es: ITranslation
-}
+import {ITranslations} from "./Interfaces/SharedInterfaces";
 
 const translations: ITranslations = {
     en: {

@@ -4,8 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from "./Components/Home/Home";
 import Dex from "./Components/Dex/Dex";
 import Details from './Components/Details/Details'
-import {IPokemon} from "./Components/Interfaces/Interfaces";
-import ContextComponent from "./Components/Context/MainContext";
+import {IPokemon} from "./Components/Interfaces/SharedInterfaces";
+import ContextComponent from "./Components/Context/TranslateContext";
 
 export type RootParamList = {
     Home: undefined

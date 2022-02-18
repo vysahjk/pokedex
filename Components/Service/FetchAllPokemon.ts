@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {IPokemon} from "../Interfaces/Interfaces";
+import {IPokemon} from "../Interfaces/SharedInterfaces";
 axios.defaults.baseURL = "https://pokeapi.co/api/v2"
 
 interface IResponseSearch {
@@ -19,7 +19,12 @@ const fetchAllPokemon = (limit: number, offset: number) => {
     useEffect(() => {
         setLoading(true)
         if(offset >= 0){
-            axios.get(`/pokemon?limit=${limit}&offset=${offset}`)
+            axios.get(`/pokemon`, {
+                params: {
+                    limit: limit,
+                    offset: offset
+                }
+            })
                 .then(response => {
                     setListPokemon( prevState => {
                         return [...new Set([...prevState, ...response.data.results])]

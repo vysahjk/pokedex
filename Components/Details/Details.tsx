@@ -3,17 +3,16 @@ import {View, Button} from "react-native";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
 import {useContext, useEffect, useState} from "react";
-import {IPokemon} from "../Interfaces/Interfaces";
+import {IPokemon, ITranslateContext} from "../Interfaces/SharedInterfaces";
 import {fetchPokemonBy} from "../Service/FetchPokemonBy";
 import useNavigation from "../Navigation/Navigation";
 import screenTop from "./ScreenTop/ScreenTop";
 import DisplayField from "./DisplayField/DisplayField";
-import {IMainContext, mainContext} from "../Context/MainContext";
+import {mainContext} from "../Context/TranslateContext";
 
 type DetailsProps = StackScreenProps<RootParamList, 'Details'>
-
 const Details = ({route, navigation}: DetailsProps) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
     const {goTo} = useNavigation()
     const goToPage = (page: string) => {
         goTo(navigation, page, {})

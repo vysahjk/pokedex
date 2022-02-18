@@ -1,11 +1,7 @@
 import * as React from "react";
-import {StyleProp, Text, TextStyle, View} from "react-native";
+import {View, Text} from "react-native";
+import {IDisplayField} from "./Interfaces";
 
-interface IDisplayField {
-    styles?: StyleProp<TextStyle>
-    title: string
-    field: string | number
-}
 const DisplayField = (props: IDisplayField) => {
 
     return (

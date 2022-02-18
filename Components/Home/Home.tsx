@@ -10,7 +10,9 @@ import PokeBall from "./PokeBall/PokeBall";
 import logo from '../../assets/logo.png'
 import styles from './HomeStyles'
 import Dropdown from "./Dropdown/Dropdown";
-import {IMainContext, mainContext} from "../Context/MainContext";
+import {mainContext} from "../Context/TranslateContext";
+import {translations} from "../translations";
+import {ITranslateContext} from "../Interfaces/SharedInterfaces";
 
 type HomeProps = StackScreenProps<RootParamList, 'Home'>
 const nameSubject = new BehaviorSubject<string>("")
@@ -18,7 +20,7 @@ const nameObservable = nameSubject.pipe(
     filter(val => val.trim().length > 4)
 )
 const Home = ({navigation}: HomeProps) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
 
     // Navigation
     const {goTo} = useNavigation()
@@ -46,7 +48,7 @@ const Home = ({navigation}: HomeProps) => {
 
     return (
         <View style={styles.container}>
-            <Dropdown items={['en', 'fr', 'es']} />
+            <Dropdown items={Object.keys(translations)} />
             <View style={styles.header}>
                 <Image
                     source={logo}

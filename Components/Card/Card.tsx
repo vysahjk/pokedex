@@ -1,25 +1,18 @@
 import * as React from 'react'
-import {ReactNode, useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {IPokemon} from '../Interfaces/Interfaces';
+import {IPokemon, ITranslateContext} from '../Interfaces/SharedInterfaces';
 import {useStockPokemon} from "../Service/Stockage";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import {fetchPokemonBy} from "../Service/FetchPokemonBy";
 import {Pokemon} from '../Models/Pokemon';
 import styles from './CardStyles'
-import {IMainContext, mainContext} from "../Context/MainContext";
-
-export interface ICardProps {
-    checked: () => void
-    selected: (pokemon: IPokemon) => void
-    filterByCaptured: boolean
-    last?: (node: ReactNode) => void
-    pokemon: IPokemon
-}
+import {mainContext} from "../Context/TranslateContext";
+import {ICardProps} from "./Interfaces";
 
 const Card = (props: ICardProps) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
     const goToDetails = () => {
         props.selected(pokemon as IPokemon)
     }

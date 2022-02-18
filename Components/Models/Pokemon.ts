@@ -1,4 +1,4 @@
-import {IPokemon, ISprites, IType} from "../Interfaces/Interfaces";
+import {IPokemon, ISprites, IType} from "../Interfaces/SharedInterfaces";
 
 class Type implements IType {
     name: string
@@ -19,8 +19,6 @@ class Type implements IType {
         }
     }
 }
-
-
 
 class Sprites  implements ISprites {
     front_default: string

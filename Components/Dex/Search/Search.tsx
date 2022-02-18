@@ -5,14 +5,10 @@ import {faListOl, faFilter} from '@fortawesome/free-solid-svg-icons'
 import {BehaviorSubject} from "rxjs"
 import {map} from 'rxjs/operators'
 import {ReactNode, useContext, useEffect, useRef, useState} from "react"
-import {IPokemon} from "../../Interfaces/Interfaces"
+import {IPokemon, ITranslateContext} from "../../Interfaces/SharedInterfaces"
 import {styles} from './SearchStyles'
-import {IMainContext, mainContext} from "../../Context/MainContext";
-
-interface ISubject {
-    list: Array<IPokemon>
-    query: string
-}
+import {mainContext} from "../../Context/TranslateContext";
+import {ISubject} from "./Interfaces";
 
 const searchSubject = new BehaviorSubject<ISubject>({
     list: [],
@@ -37,7 +33,7 @@ type ISearchProps = {
     children: (pokes: Array<IPokemon>, filterByCaptured: boolean) => ReactNode
 }
 const Search = (props: ISearchProps) => {
-    const context = useContext<IMainContext>(mainContext)
+    const context = useContext<ITranslateContext>(mainContext)
     const animationCapturedNumber = useRef(new Animated.Value(1)).current
     const [filterByCaptured, setFilterByCaptured] = useState<boolean>(false)
     const [pokes, setPokes] = useState<Array<IPokemon>>([])
