@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     cardImage: {
         position: "relative",
         flex: 1.2,
-        alignItems: "flex-start"
+        alignItems: "flex-start",
     },
     pokemonNumber: {
         position: "absolute",

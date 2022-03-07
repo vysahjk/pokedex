@@ -81,10 +81,11 @@ const Card = (props: ICardProps) => {
                 >
                     <Image
                         style={styles.innerPokemonImage}
+                        resizeMode={"contain"}
                         source={{
                             uri: pokemon?.sprites?.front_default,
-                            height: 100,
-                            width: 100
+                            height: 80,
+                            width: 80
                         }}
                     />
                 </TouchableOpacity>
