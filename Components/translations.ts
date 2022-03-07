@@ -1,5 +1,9 @@
 import {ITranslations} from "./Interfaces/SharedInterfaces";
 
+/**
+ * Traductions en, fr, it, es
+ * Si on veux une nouvelle traductions, il faut juste ajouter l'objet avec les nouvelles traductions pour chaque clé
+ */
 const translations: ITranslations = {
     en: {
         "en": "🇺🇸 English",

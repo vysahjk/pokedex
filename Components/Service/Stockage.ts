@@ -1,6 +1,9 @@
 import {useCallback, useState} from "react";
 import {IPokemon} from "../Interfaces/SharedInterfaces";
 
+/**
+ * Service de stockage avec localstorage
+ */
 const useStockPokemon = () => {
     const [capture, setCapture] = useState<boolean>(false)
     const setPokemonInStorage = useCallback((poke: IPokemon) => {

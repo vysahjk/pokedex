@@ -11,6 +11,12 @@ import styles from './CardStyles'
 import {mainContext} from "../Context/TranslateContext";
 import {ICardProps} from "./Interfaces";
 
+/**
+ * Component card pour chaque pokemon
+ * affiche image, type et button capturé ou pas
+ * @param props
+ * @constructor
+ */
 const Card = (props: ICardProps) => {
     const context = useContext<ITranslateContext>(mainContext)
     const goToDetails = () => {

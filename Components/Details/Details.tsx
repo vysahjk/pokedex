@@ -11,6 +11,13 @@ import DisplayField from "./DisplayField/DisplayField";
 import {mainContext} from "../Context/TranslateContext";
 
 type DetailsProps = StackScreenProps<RootParamList, 'Details'>
+
+/**
+ * Component qui affiche le detail d'un pokemon
+ * @param route
+ * @param navigation
+ * @constructor
+ */
 const Details = ({route, navigation}: DetailsProps) => {
     const context = useContext<ITranslateContext>(mainContext)
     const {goTo} = useNavigation()

@@ -12,6 +12,14 @@ import styles from './DexStyles'
 import {mainContext} from "../Context/TranslateContext";
 
 type DexProps = StackScreenProps<RootParamList, 'PokeDex'>
+
+/**
+ * Component secondaire
+ * Affiche la liste de pokemon
+ * @param route
+ * @param navigation
+ * @constructor
+ */
 const Dex = ({route, navigation}: DexProps) => {
     const context = useContext<ITranslateContext>(mainContext)
 

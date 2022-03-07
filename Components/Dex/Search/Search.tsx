@@ -32,6 +32,12 @@ type ISearchProps = {
     listPokemon: Array<IPokemon>
     children: (pokes: Array<IPokemon>, filterByCaptured: boolean) => ReactNode
 }
+
+/**
+ * Component de recherche de pokemon sur l'écran secondaire Pokedex
+ * @param props
+ * @constructor
+ */
 const Search = (props: ISearchProps) => {
     const context = useContext<ITranslateContext>(mainContext)
     const animationCapturedNumber = useRef(new Animated.Value(1)).current

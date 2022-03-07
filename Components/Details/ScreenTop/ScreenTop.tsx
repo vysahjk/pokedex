@@ -3,6 +3,11 @@ import {Image, ImageBackground, View} from "react-native";
 import garden from '../../../assets/garden.png'
 import styles from './ScreenTopStyles'
 
+/**
+ * Component qui affiche le gif d'un pokemon in component details
+ * pure css
+ * @param gif
+ */
 const screenTop = (gif: string) => {
     return (
         <View style={styles.outer}>

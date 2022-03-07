@@ -2,6 +2,11 @@ import * as React from "react";
 import {View} from "react-native";
 import styles from "./PokeBallStyles";
 
+/**
+ * Component pokeball dans l'écran principal
+ * pure css
+ * @constructor
+ */
 const PokeBall = () => {
     return (
         <View style={{

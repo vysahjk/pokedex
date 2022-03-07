@@ -4,6 +4,11 @@ import {mainContext} from "../../Context/TranslateContext";
 import {ITranslateContext, ITranslations} from "../../Interfaces/SharedInterfaces";
 import {IDropdown} from "./Interfaces";
 
+/**
+ * Dropdown pour gérer les traductions dans l'écran principale
+ * @param props
+ * @constructor
+ */
 const Dropdown = (props: IDropdown) => {
     const context = useContext<ITranslateContext>(mainContext)
 

@@ -12,6 +12,11 @@ const TranslateContext = createContext<ITranslateContext>({
     }
 })
 
+/**
+ * Component Context de l'application pour la translation dans toute les écrans
+ * @param props
+ * @constructor
+ */
 const ContextComponent = (props: ITranslateComponent) => {
     const [userName, setUserName] = useState<string>("")
     const [lang, setLang] = useState<keyof ITranslations>("en")

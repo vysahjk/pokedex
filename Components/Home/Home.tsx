@@ -19,6 +19,13 @@ const nameSubject = new BehaviorSubject<string>("")
 const nameObservable = nameSubject.pipe(
     filter(val => val.trim().length > 4)
 )
+
+/**
+ * Component principal
+ * Affiche input pour le nom de l'utilisateur et button start
+ * @param navigation
+ * @constructor
+ */
 const Home = ({navigation}: HomeProps) => {
     const context = useContext<ITranslateContext>(mainContext)
 

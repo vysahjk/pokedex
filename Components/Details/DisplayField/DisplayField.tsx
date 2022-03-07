@@ -2,6 +2,11 @@ import * as React from "react";
 import {View, Text} from "react-native";
 import {IDisplayField} from "./Interfaces";
 
+/**
+ * Component qui affiche le champ de detail dans l'écran de details
+ * @param props
+ * @constructor
+ */
 const DisplayField = (props: IDisplayField) => {
 
     return (

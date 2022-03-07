@@ -11,6 +11,11 @@ interface IResponseSearch {
     listPokemon: IPokemon[]
 }
 
+/**
+ * Service pour fetch tout les pokemon avec la pagination
+ * @param limit
+ * @param offset
+ */
 const fetchAllPokemon = (limit: number, offset: number) => {
     const [loading, setLoading] = useState<boolean>(false)
     const [hasMore, setHasMore] = useState<boolean>(false)

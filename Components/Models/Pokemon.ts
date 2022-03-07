@@ -41,7 +41,7 @@ class Sprites  implements ISprites {
                 delete dataClone[property]
             }
         }
-
+        this.front_default = data?.other['dream_world']['front_default']
         this.versions = Object.create({}, {
             "gif_default": {
                 value: data?.versions['generation-v']['black-white'].animated.front_default
@@ -50,6 +50,9 @@ class Sprites  implements ISprites {
     }
 }
 
+/**
+ * Model pokemon
+ */
 export class Pokemon implements IPokemon {
     id: number
     types: Array<Type>
