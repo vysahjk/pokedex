@@ -25,6 +25,8 @@ const translations: ITranslations = {
         "Description": "Description",
         "Happiness": "Happiness rate",
         "Habitat": "Habitat",
+        "ErrorMessage" : "Oops!, we have not been able to find their pokemons",
+        "GoToHome": "Go to home and try again"
     },
     fr: {
         "en": "🇺🇸 Anglais",
@@ -46,6 +48,8 @@ const translations: ITranslations = {
         "Description": "Description",
         "Happiness": "Taux de bonheur",
         "Habitat": "Habitat",
+        "ErrorMessage" : "Oops!, Nous n'avons pas été en mesure de trouver leurs pokémons.",
+        "GoToHome": "Allez à la acceuil et essayez à nouveau"
     },
     it: {
         "en": "🇺🇸 Inglese",
@@ -67,6 +71,8 @@ const translations: ITranslations = {
         "Description": "Descrizione",
         "Happiness": "Tasso di felicità",
         "Habitat": "Habitat",
+        "ErrorMessage" : "Oops!, non siamo stati in grado di trovare i loro pokemon",
+        "GoToHome": "Vai alla home page e riprova"
     },
     es: {
         "en": "🇺🇸 Inglés",
@@ -88,6 +94,8 @@ const translations: ITranslations = {
         "Description": "Descripción",
         "Happiness": "Tasa de felicidad",
         "Habitat": "Habitad",
+        "ErrorMessage" : "Oops!, no hemos podido encontrar sus pokemones",
+        "GoToHome": "Vaya a la página de inicio e inténtelo de nuevo"
     }
 }
 

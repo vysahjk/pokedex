@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {IPokemon} from "../Interfaces/SharedInterfaces";
+import useNavigation from "../Navigation/Navigation";
 axios.defaults.baseURL = "https://pokeapi.co/api/v2"
 
 interface IResponseSearch {
@@ -17,6 +18,7 @@ interface IResponseSearch {
  * @param offset
  */
 const fetchAllPokemon = (limit: number, offset: number) => {
+    const navigation = useNavigation()
     const [loading, setLoading] = useState<boolean>(false)
     const [hasMore, setHasMore] = useState<boolean>(false)
     const [listPokemon, setListPokemon] = useState<Array<IPokemon>>([])
@@ -37,6 +39,10 @@ const fetchAllPokemon = (limit: number, offset: number) => {
 
                     setHasMore(response.data.results.length > 0)
                     setLoading(false)
+                })
+                .catch(_ => {
+                    navigation.goTo(null, "Error", {})
+                    return
                 })
         }
     }, [offset])

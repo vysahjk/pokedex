@@ -4,11 +4,12 @@ import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
 import {useContext, useEffect, useState} from "react";
 import {IPokemon, ITranslateContext} from "../Interfaces/SharedInterfaces";
-import {fetchPokemonBy} from "../Service/FetchPokemonBy";
+import {EPokemonFetch, fetchPokemonBy} from "../Service/FetchPokemonBy";
 import useNavigation from "../Navigation/Navigation";
 import screenTop from "./ScreenTop/ScreenTop";
 import DisplayField from "./DisplayField/DisplayField";
 import {mainContext} from "../Context/TranslateContext";
+import {AxiosResponse} from "axios";
 
 type DetailsProps = StackScreenProps<RootParamList, 'Details'>
 
@@ -28,8 +29,9 @@ const Details = ({route, navigation}: DetailsProps) => {
     const [detailPokemon, setDetailPokemon] = useState<IPokemon | undefined>(undefined)
     useEffect(() => {
         (async () => {
-            const {data: next} = await fetchPokemonBy("pokemon-species", route.params.pokemon.name)
-            setDetailPokemon(route.params.pokemon.setExtendedProps(next as any, context.lang))
+            const response = await fetchPokemonBy(EPokemonFetch.ESpecies, route.params.pokemon.name) as AxiosResponse
+            if(!response) return
+            setDetailPokemon(route.params.pokemon.setExtendedProps(response.data as any, context.lang))
         })()
     }, [])
 
