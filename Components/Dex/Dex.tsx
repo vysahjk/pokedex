@@ -10,6 +10,7 @@ import Search from "./Search/Search";
 import Card from "../Card/Card";
 import styles from './DexStyles'
 import {mainContext} from "../Context/TranslateContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type DexProps = StackScreenProps<RootParamList, 'PokeDex'>
 
@@ -44,8 +45,8 @@ const Dex = ({route, navigation}: DexProps) => {
     useEffect(() => {
         onChecked()
     }, [])
-    const onChecked = () => {
-        let pokes = JSON.parse(sessionStorage.getItem("pokes") ?? JSON.stringify([]))
+    const onChecked = async () => {
+        let pokes = JSON.parse(await AsyncStorage.getItem("pokes") ?? JSON.stringify([]))
         setCountCaptured(pokes.length)
     }
 
