@@ -15,6 +15,9 @@ import {translations} from "../translations";
 import {ITranslateContext} from "../Interfaces/SharedInterfaces";
 
 type HomeProps = StackScreenProps<RootParamList, 'Home'>
+
+// Observable pour le nom
+// On accept un nom d'au moins 3 charactères
 const nameSubject = new BehaviorSubject<string>("")
 const nameObservable = nameSubject.pipe(
     filter(val => val.trim().length > 4)

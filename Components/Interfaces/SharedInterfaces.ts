@@ -32,6 +32,8 @@ export interface ITranslation {
     Description: string
     Happiness: string
     Habitat: string
+    ErrorMessage: string
+    GoToHome: string
 }
 
 export interface ITranslations {

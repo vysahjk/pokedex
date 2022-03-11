@@ -10,6 +10,7 @@ import {Pokemon} from '../Models/Pokemon';
 import styles from './CardStyles'
 import {mainContext} from "../Context/TranslateContext";
 import {ICardProps} from "./Interfaces";
+import {AxiosResponse} from "axios";
 
 /**
  * Component card pour chaque pokemon
@@ -32,8 +33,9 @@ const Card = (props: ICardProps) => {
     const [pokemon, setPokemon] = useState<IPokemon | undefined>(undefined)
     useEffect(() => {
         (async () => {
-            const {data: next} = await fetchPokemonBy("pokemon", props.pokemon.name)
-            const pokemon = new Pokemon(next as any)
+            const response = await fetchPokemonBy("pokemon", props.pokemon.name) as AxiosResponse
+            if(!response) return
+            const pokemon = new Pokemon(response.data as any)
             setPokemon(_ => {
                 checkCaptured(pokemon, (captured: boolean) => {
                     pokemon.captured = captured
