@@ -36,7 +36,7 @@ const ErrorPage = () => {
                         justifyContent: 'center',
                         borderRadius: 10,
                     }}
-                    onPress={goToHome}><Text style={{color: "white"}}>{context.translation('GoToHome')}</Text></TouchableOpacity>
+                    onPress={goToHome}><Text style={{color: "#fff"}}>{context.translation('GoToHome')}</Text></TouchableOpacity>
             </View>
         </View>
     )

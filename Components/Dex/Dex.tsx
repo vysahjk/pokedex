@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {ActivityIndicator, Button, Text, View} from 'react-native';
+import {Button, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
@@ -21,7 +21,7 @@ type DexProps = StackScreenProps<RootParamList, 'PokeDex'>
  * @param navigation
  * @constructor
  */
-const Dex = ({route, navigation}: DexProps) => {
+const Dex = ({navigation}: DexProps) => {
     const context = useContext<ITranslateContext>(mainContext)
 
     // Navigation
@@ -36,14 +36,15 @@ const Dex = ({route, navigation}: DexProps) => {
     }
 
     // Limit of pokemon list
-    const limit = 10
+    const limit = 20
     const [offset, setOffset] = useState<number>(0)
     const {listPokemon, hasMore, loading} = fetchAllPokemon(limit, offset)
     const [countCaptured ,setCountCaptured] = useState<number>(0)
 
     // When Pokemon is captured
     useEffect(() => {
-        onChecked()
+        AsyncStorage.clear().then(console.log)
+        onChecked().then(console.log)
     }, [])
     const onChecked = async () => {
         let pokes = JSON.parse(await AsyncStorage.getItem("pokes") ?? JSON.stringify([]))
@@ -69,7 +70,7 @@ const Dex = ({route, navigation}: DexProps) => {
     return (
         <View style={styles.container}>
             <View style={{width: "100%"}}>
-                <View style={{margin: "auto", marginBottom: 10, width: "100%"}}>
+                <View style={{margin: "auto", marginBottom: 10, marginTop: 30, width: "100%"}}>
                     <Button
                         color={"#dd6b4d"}
                         title={context.translation('GoBack')}
@@ -81,40 +82,27 @@ const Dex = ({route, navigation}: DexProps) => {
                     fontSize: 20,
                     textAlign: "center",
                     margin: 10
-                }}>{context.translation('TitleDex')} {route.params.userName}</Text>
+                }}>{context.translation('TitleDex')} {context.userName}</Text>
             </View>
-
-            <View style={{width: "90%"}}>
-                <Search numberCaptured={countCaptured} listPokemon={listPokemon}>
-                    {(pokes: Array<IPokemon>, filterByCaptured: boolean) => (
-                        <View>
-                            {pokes.map((poke: any, i: number) => {
-                                if (pokes.length >=10 && listPokemon.length === (i + 1)) {
+            <SafeAreaView style={{width: "100%"}}>
+                <ScrollView>
+                    <Search numberCaptured={countCaptured} listPokemon={listPokemon}>
+                        {(pokes: Array<IPokemon>, filterByCaptured: boolean) => (
+                            <View>
+                                {pokes.map((poke: any, i: number) => {
                                     return <Card
-                                        key={poke.name}
-                                        pokemon={poke}
-                                        checked={onChecked}
-                                        selected={onSelectPokemon}
-                                        filterByCaptured={filterByCaptured}
-                                        last={lastPokeMon}
-                                    />
-                                } else {
-                                    return <Card
-                                        key={poke.name}
+                                        key={poke.name+i}
                                         checked={onChecked}
                                         filterByCaptured={filterByCaptured}
                                         selected={onSelectPokemon}
                                         pokemon={poke}
                                     />
-                                }
-                            })}
-                        </View>
-                    )}
-                </Search>
-            </View>
-
-            {loading ? <View style={{height: 100}}><ActivityIndicator size={"large"} color={"salmon"}/></View> : <></>}
-
+                                })}
+                            </View>
+                        )}
+                    </Search>
+                </ScrollView>
+            </SafeAreaView>
         </View>)
 }
 

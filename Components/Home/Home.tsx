@@ -57,7 +57,6 @@ const Home = ({navigation}: HomeProps) => {
 
     return (
         <View style={styles.container}>
-            <Dropdown items={Object.keys(translations)} />
             <View style={styles.header}>
                 <Image
                     source={logo}
@@ -72,17 +71,17 @@ const Home = ({navigation}: HomeProps) => {
 
             <PokeBall />
 
-            <View style={{marginBottom: "20%", width: 200}}>
+            <View style={{marginBottom: 20, width: 200}}>
                 <TouchableOpacity
                     style={{
                         height: 50,
-                        backgroundColor: startDisabled? "white": "#D25B70",
+                        backgroundColor: startDisabled? "#fff": "#D25B70",
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 10,
                     }}
                     disabled={startDisabled}
-                    onPress={goToDesk}><Text style={{color: startDisabled? "black": "white"}}>{context.translation('Start')}</Text></TouchableOpacity>
+                    onPress={goToDesk}><Text style={{color: startDisabled? "#000": "#fff"}}>{context.translation('Start')}</Text></TouchableOpacity>
             </View>
         </View>)
 }

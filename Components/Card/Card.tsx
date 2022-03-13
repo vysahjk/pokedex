@@ -48,14 +48,14 @@ const Card = (props: ICardProps) => {
     const setInSessionStorage = () => {
         setPokemon(prevState => {
             let newPokemon = {...prevState as IPokemon, captured: !capture}
-            setPokemonInStorage(newPokemon as IPokemon)
+            setPokemonInStorage(newPokemon as IPokemon, !capture).then(console.log)
             return newPokemon
         })
         props.checked()
     }
 
     if (!pokemon) {
-        return <></>
+        return <View></View>
     }
     return (
         <View ref={props.last}
@@ -68,14 +68,14 @@ const Card = (props: ICardProps) => {
                 <TouchableOpacity
                     style={[styles.pokemonNumber, {
                         margin: "auto",
-                        height: "2rem",
-                        width: "2rem",
+                        height: 30,
+                        width: 30,
                         backgroundColor: "#D25B70",
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 100,
                     }]}
-                >{pokemon?.id}
+                ><Text>{pokemon?.id}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.pokemonImage}
@@ -85,42 +85,42 @@ const Card = (props: ICardProps) => {
                         style={styles.innerPokemonImage}
                         resizeMode={"contain"}
                         source={{
-                            uri: pokemon?.sprites?.front_default,
-                            height: 80,
-                            width: 80
+                            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
+                            height: 100,
+                            width: 100
                         }}
                     />
                 </TouchableOpacity>
             </View>
             <View>
                 <Text style={styles.text}>{props.pokemon.name}</Text>
-                <div>
+                <View>
                     <Text>{context.translation('TypePokemon')}:</Text>
                     {pokemon?.types.map((type, i: number) => {
-                        return (<li style={{marginLeft: 15}} key={i}>{type.name}</li>)
+                        return (<Text style={{marginLeft: 15}} key={i}>{type.name}</Text>)
                     })}
-                </div>
+                </View>
             </View>
             <View style={{flex: 1, height: "100%", justifyContent: "flex-start"}}>
-                <div style={{height: 15, margin: "0 auto"}}>
-                    {capture ? <Text style={{margin: "auto", fontWeight: "bold"}}>Captured</Text> : <></>}
-                </div>
-                <div style={{margin: "auto", marginTop: 5,}}>
-                    <TouchableOpacity
-                        style={{
-                            margin: "auto",
-                            height: 50,
-                            width: capture ? 70 : 50,
-                            backgroundColor: capture ? "#D25B70" : "#ffeeec",
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 50 * 2,
-                        }}
-                        onPress={setInSessionStorage}>
-                        <Text style={{fontSize: 15, color: "white"}}>{!capture ? "⬜" :
-                            <FontAwesomeIcon icon={faCheck}/>}</Text>
-                    </TouchableOpacity>
-                </div>
+
+            </View>
+            <View style={{margin: "auto", alignItems: "center", marginTop: 5, marginRight:30}}>
+                <View style={{height: 15, margin: 0, marginBottom: 5,}}>
+                    {capture ? <Text style={{margin: "auto", fontWeight: "bold"}}>Captured</Text> : <Text></Text>}
+                </View>
+                <TouchableOpacity
+                    style={{
+                        margin: "auto",
+                        height: 50,
+                        width: capture ? 70 : 50,
+                        backgroundColor: capture ? "#D25B70" : "#ffeeec",
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 50 * 2,
+                    }}
+                    onPress={setInSessionStorage}>
+                    <Text style={{fontSize: 15, color: "#fff"}}>{!capture ? "⬜" : "✔"}</Text>
+                </TouchableOpacity>
             </View>
         </View>)
 

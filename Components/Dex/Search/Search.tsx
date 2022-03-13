@@ -1,7 +1,5 @@
 import * as React from "react";
-import {Animated, TextInput, View, Text} from "react-native"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faListOl, faFilter} from '@fortawesome/free-solid-svg-icons'
+import {Animated, TextInput, View, Text, TouchableOpacity} from "react-native"
 import {BehaviorSubject} from "rxjs"
 import {map} from 'rxjs/operators'
 import {ReactNode, useContext, useEffect, useRef, useState} from "react"
@@ -95,21 +93,13 @@ const Search = (props: ISearchProps) => {
     return (
         <View>
             <View>
-
                 <TextInput
                     style={styles.InputText}
                     value={search}
                     onChangeText={onSearch}
                     placeholder={context.translation('SearchPlaceholder')}
                 />
-
                 <View style={{position: "relative", paddingLeft: 30, margin: 5}}>
-                    <FontAwesomeIcon style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        height: "100%"
-                    }} icon={faListOl}/>
                     <Text style={{fontWeight: "bold"}}>{context.translation('CountLabel')}: {pokes.length}</Text>
                 </View>
                 <View style={{
@@ -119,35 +109,15 @@ const Search = (props: ISearchProps) => {
                     paddingLeft: 30,
                     margin: 5
                 }}>
-                    <FontAwesomeIcon style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        height: "100%"
-                    }} icon={faListOl}/>
-                    <View>
-                        <Text style={{fontWeight: "bold"}}>{context.translation('CapturedLabel')}: {<Animated.View
-                            style={{
-                                transform: [{ scale: animationCapturedNumber }],
-                            }}>
-                            <Text>{props.numberCaptured}</Text>
-                        </Animated.View>}</Text>
-                    </View>
-                    <View style={{flexDirection: "row"}}>
-                        <Text style={{
-                            position: "relative",
-                            marginRight: 30,
-                            color: filterByCaptured ? "green" : "black"
-                        }}>{context.translation('FilterLabel')}</Text>
-                        <FontAwesomeIcon style={{
-                            position: "absolute",
-                            cursor: "pointer",
-                            color: filterByCaptured ? "green" : "black",
-                            top: 0,
-                            right: 0,
-                            height: "100%"
-                        }} icon={faFilter} onClick={onFilterByCaptured}/>
-                    </View>
+                    <TouchableOpacity onPress={onFilterByCaptured}>
+                        <View style={{flexDirection: "row"}}>
+                            <Text style={{
+                                position: "relative",
+                                marginRight: 30,
+                                color: filterByCaptured ? "#f00" : "#000"
+                            }}>{context.translation('FilterLabel')}</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View>

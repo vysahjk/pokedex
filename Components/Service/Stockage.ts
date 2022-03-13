@@ -6,10 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  */
 const useStockPokemon = () => {
     const [capture, setCapture] = useState<boolean>(false)
-    const setPokemonInStorage = useCallback( async(poke: IPokemon) => {
+    const setPokemonInStorage = useCallback( async(poke: IPokemon, captured: boolean) => {
         let pokes = JSON.parse(await AsyncStorage.getItem("pokes") ?? JSON.stringify([]))
 
-        if (!capture) {
+        if (!captured) {
             pokes.push(poke)
         } else {
             pokes = pokes.filter((p: IPokemon) => p.id !== poke.id)
@@ -26,9 +26,9 @@ const useStockPokemon = () => {
 
     const checkCaptured = async (pokemon: IPokemon, callback: (captured: boolean) => void) => {
         let pokes = JSON.parse(await AsyncStorage.getItem("pokes") ?? JSON.stringify([]))
-        const names = pokes.map((i: any) => i.name)
-        setCapture(names.includes(pokemon.name.trim()))
-        callback(names.includes(pokemon.name.trim()))
+        const ids = pokes.map((i: any) => i.id)
+        setCapture(ids.includes(pokemon.id))
+        callback(ids.includes(pokemon.id))
     }
 
     return {

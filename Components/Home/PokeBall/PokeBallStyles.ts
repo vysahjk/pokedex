@@ -52,7 +52,8 @@ const pokeBallStyles = StyleSheet.create({
         backgroundColor: "#781728",
         borderRadius: 100,
         display: "flex",
-        placeItems: "center",
+        alignItems: "center",
+        justifyContent: "center",
         position: "relative",
     },
     dotBottom: {
@@ -60,7 +61,7 @@ const pokeBallStyles = StyleSheet.create({
         top: 100,
         width: 200,
         height: "50%",
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         borderBottomLeftRadius: 200,
         borderBottomRightRadius: 200
     },

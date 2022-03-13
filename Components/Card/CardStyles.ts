@@ -13,8 +13,10 @@ const styles = StyleSheet.create({
         textTransform: "capitalize"
     },
     cardImage: {
+        height: 100,
+        width: 100,
         position: "relative",
-        flex: 1.2,
+        flex: 1.3,
         alignItems: "flex-start",
     },
     pokemonNumber: {
@@ -22,11 +24,11 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         marginLeft: 25,
-        color: "white",
+        color: "#fff",
         fontWeight: "bold"
     },
     pokemonImage: {width: "100%"},
-    innerPokemonImage: {margin: "auto"}
+    innerPokemonImage: {margin: 10}
 })
 
 export default styles

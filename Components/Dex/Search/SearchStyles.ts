@@ -2,11 +2,10 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     InputText: {
-        backgroundColor: "",
-        borderColor: "grey",
+        borderColor: "#fff",
         borderWidth: 1,
-        padding: "10px",
-        marginBottom: "10px",
+        padding: 10,
+        marginBottom: 10,
         textAlign: "center"
     }
 })

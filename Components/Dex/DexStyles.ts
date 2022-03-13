@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
         height: "100%",
         overflow: "hidden",
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         justifyContent: "flex-start",
         alignItems: "center"
     },
@@ -14,15 +14,15 @@ const styles = StyleSheet.create({
     text: { fontWeight: "bold", textTransform: "capitalize"},
     buttonBack : {
         margin: "auto",
-        marginBottom: "10px",
+        marginBottom: 10,
         width: "100%"
     },
     userNameFormat:{
         width: "100%",
         fontWeight: "bold",
-        fontSize: "20px",
+        fontSize: 20,
         textAlign: "center",
-        marginBottom: "20px"
+        marginBottom: 20
     },
     pokemonList: {
         width: "100%"

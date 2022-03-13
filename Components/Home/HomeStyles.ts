@@ -15,21 +15,21 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     div: {display: "flex", justifyContent: "center", alignContent: "center"},
-    ImageLogo: {width: "100%", marginTop: "15px", height: "100px", resizeMode: "center"},
+    ImageLogo: {width: "100%", marginTop: 15, height: 100, resizeMode: "center"},
     InputText: {
         width: "100%",
-        backgroundColor: "white",
-        borderColor: "black",
+        backgroundColor: "#fff",
+        borderColor: "#000",
         borderWidth: 1,
-        padding: "10px",
-        marginBottom: "10px",
+        padding: 10,
+        marginBottom: 10,
         textAlign: "center"
     },
     title: {
-        margin: "20px"
+        margin: 20
     },
     buttonStart: {
-        marginBottom: "100px"
+        marginBottom: 100
     }
 })
 

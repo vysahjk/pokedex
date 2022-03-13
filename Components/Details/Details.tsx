@@ -1,12 +1,12 @@
 import * as React from "react";
-import {View, Button} from "react-native";
+import {View, Button, SafeAreaViewComponent, SafeAreaView, ScrollView} from "react-native";
 import {StackScreenProps} from "@react-navigation/stack";
 import {RootParamList} from "../../App";
 import {useContext, useEffect, useState} from "react";
 import {IPokemon, ITranslateContext} from "../Interfaces/SharedInterfaces";
 import {EPokemonFetch, fetchPokemonBy} from "../Service/FetchPokemonBy";
 import useNavigation from "../Navigation/Navigation";
-import screenTop from "./ScreenTop/ScreenTop";
+import ScreenTop from "./ScreenTop/ScreenTop";
 import DisplayField from "./DisplayField/DisplayField";
 import {mainContext} from "../Context/TranslateContext";
 import {AxiosResponse} from "axios";
@@ -36,65 +36,70 @@ const Details = ({route, navigation}: DetailsProps) => {
     }, [])
 
     if(!detailPokemon?.extendedProps){
-        return <></>
+        return <View></View>
     }
     return (
         <View style={{
+            width: "100%",
             height: "100%",
             overflow: "hidden",
-            backgroundColor: "white",
-            justifyContent: "flex-start",
-            alignItems: "center"
+            backgroundColor: "#fff",
+            justifyContent: "center",
+            padding: 10
         }}>
-            <View style={{marginBottom: 10, width: "100%"}}>
-                <Button
-                    color={"#dd6b4d"}
-                    title={context.translation('GoBalToList')}
-                    onPress={() => goToPage("PokeDex")}/>
-            </View>
+            <SafeAreaView>
+                <ScrollView>
+                    <View style={{marginBottom: 10, marginTop: 30, width: "100%"}}>
+                        <Button
+                            color={"#dd6b4d"}
+                            title={context.translation('GoBalToList')}
+                            onPress={() => goToPage("PokeDex")}/>
+                    </View>
 
-            {screenTop(detailPokemon?.sprites.versions.gif_default as string)}
+                    {ScreenTop(detailPokemon?.sprites.versions.gif_default as string)}
 
-            <View style={{width: "90%"}}>
+                    <View style={{width: "100%"}}>
 
-                <DisplayField
-                    styles={{
-                        width: "100%",
-                        fontSize: 16,
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        margin: 10,
-                        paddingTop: 15,
-                        paddingBottom: 15,
-                        backgroundColor: "#dd6b4d",
-                        color: "white",
-                        borderRadius: 5,
-                        borderWidth: 1,
-                        textTransform: "capitalize"
-                    }}
-                    title={context.translation('Name')}
-                    field={detailPokemon?.name as string} />
+                        <DisplayField
+                            styles={{
+                                width: "100%",
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                textAlign: "center",
+                                margin: 10,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                backgroundColor: "#dd6b4d",
+                                color: "#fff",
+                                borderRadius: 5,
+                                borderWidth: 1,
+                                textTransform: "capitalize"
+                            }}
+                            title={context.translation('Name')}
+                            field={detailPokemon?.name as string} />
 
-                <DisplayField
-                    styles={{
-                        width: "100%",
-                        fontSize: 16,
-                        margin: "10%",
-                        fontWeight: "bold",
-                        textAlign: "center"
-                    }}
-                    title={context.translation('Description')}
-                    field={detailPokemon?.extendedProps.description as string} />
+                        <DisplayField
+                            styles={{
+                                width: "100%",
+                                fontSize: 16,
+                                margin: 10,
+                                fontWeight: "bold",
+                                textAlign: "center"
+                            }}
+                            title={context.translation('Description')}
+                            field={detailPokemon?.extendedProps.description as string} />
 
-                <DisplayField
-                    title={context.translation('Happiness')}
-                    field={detailPokemon?.extendedProps.base_happiness as number} />
+                        <DisplayField
+                            title={context.translation('Happiness')}
+                            field={detailPokemon?.extendedProps.base_happiness as number} />
 
-                <DisplayField
-                    title={context.translation('Habitat')}
-                    field={detailPokemon?.extendedProps.habitat.name as string} />
+                        <DisplayField
+                            title={context.translation('Habitat')}
+                            field={detailPokemon?.extendedProps.habitat.name as string} />
 
-            </View>
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }

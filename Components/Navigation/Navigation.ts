@@ -1,4 +1,5 @@
-import {navigationRef} from "../../App";
+import {createNavigationContainerRef} from "@react-navigation/native";
+export const navigationRef = createNavigationContainerRef()
 
 const useNavigation = () => {
     const goTo = (navigation: any, page: string, options: object) => {

@@ -8,7 +8,7 @@ import styles from './ScreenTopStyles'
  * pure css
  * @param gif
  */
-const screenTop = (gif: string) => {
+const ScreenTop = (gif: string) => {
     return (
         <View style={styles.outer}>
             <View style={styles.inner} >
@@ -36,4 +36,4 @@ const screenTop = (gif: string) => {
     )
 }
 
-export default screenTop
+export default ScreenTop

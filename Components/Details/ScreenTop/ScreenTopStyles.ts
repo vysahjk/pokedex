@@ -41,7 +41,7 @@ const ScreenTopStyles = StyleSheet.create({
     line: {
         height: 5,
         marginBottom: 5,
-        backgroundColor: "black",
+        backgroundColor: "#000",
         borderRadius: 5
     },
     t: {
@@ -51,12 +51,12 @@ const ScreenTopStyles = StyleSheet.create({
         width: 0,
         height: 0,
         transform: [{ rotate: "270deg" }],
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         borderStyle: "solid",
         borderRightWidth: 50,
         borderTopWidth: 50,
         borderRightColor: "#dd6b4d",
-        borderTopColor: "white",
+        borderTopColor: "#fff",
     }
 })
 
