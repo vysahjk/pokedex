@@ -43,7 +43,6 @@ const Dex = ({navigation}: DexProps) => {
 
     // When Pokemon is captured
     useEffect(() => {
-        AsyncStorage.clear().then(console.log)
         onChecked().then(console.log)
     }, [])
     const onChecked = async () => {

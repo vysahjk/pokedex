@@ -9,7 +9,7 @@ const useStockPokemon = () => {
     const setPokemonInStorage = useCallback( async(poke: IPokemon, captured: boolean) => {
         let pokes = JSON.parse(await AsyncStorage.getItem("pokes") ?? JSON.stringify([]))
 
-        if (!captured) {
+        if (!capture) {
             pokes.push(poke)
         } else {
             pokes = pokes.filter((p: IPokemon) => p.id !== poke.id)
