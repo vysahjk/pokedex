@@ -1,5 +1,16 @@
 # PokeDex
 
+Installation:
+
+1. Installer Expo app dans le téléphone
+2. Lancer le projet
+   1. Cloner le projet
+   2. lancer la commande: ```npm install```
+   3. Lancer la commande: 
+      1. ```expo-cli start```
+
+Cela va générer un code QR qu'il va falloir scanner avec l'app EXPO sur le téléphone.
+
 L'application est faite en React native typescript avec expo CLI.
 
 Il y a trois écran: principal, liste de pokemon, detail d'un pokemon.
