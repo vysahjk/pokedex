@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 
 const ScreenTopStyles = StyleSheet.create({
     outer: {
-        width: "90%",
+        width: "100%",
         height: 320,
         marginBottom: 50,
         backgroundColor: "#dd6b4d",
@@ -21,7 +21,7 @@ const ScreenTopStyles = StyleSheet.create({
     inner: {
         position: "absolute",
         top: 25,
-        left: 20,
+        left: 25,
         height: "70%",
         width: "90%",
         borderRadius: 20,

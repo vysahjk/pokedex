@@ -36,7 +36,7 @@ const Dex = ({navigation}: DexProps) => {
     }
 
     // Limit of pokemon list
-    const limit = 20
+    const limit = 100
     const [offset, setOffset] = useState<number>(0)
     const {listPokemon, hasMore, loading} = fetchAllPokemon(limit, offset)
     const [countCaptured ,setCountCaptured] = useState<number>(0)

@@ -12,7 +12,7 @@ import styles from './HomeStyles'
 import Dropdown from "./Dropdown/Dropdown";
 import {mainContext} from "../Context/TranslateContext";
 import {translations} from "../translations";
-import {ITranslateContext} from "../Interfaces/SharedInterfaces";
+import {ITranslateContext, ITranslations} from "../Interfaces/SharedInterfaces";
 
 type HomeProps = StackScreenProps<RootParamList, 'Home'>
 
@@ -20,7 +20,7 @@ type HomeProps = StackScreenProps<RootParamList, 'Home'>
 // On accept un nom d'au moins 3 charactères
 const nameSubject = new BehaviorSubject<string>("")
 const nameObservable = nameSubject.pipe(
-    filter(val => val.trim().length > 4)
+    filter(val => val.trim().length >= 3 )
 )
 
 /**
@@ -57,6 +57,7 @@ const Home = ({navigation}: HomeProps) => {
 
     return (
         <View style={styles.container}>
+            <Dropdown items={["en", "fr", "it", "es"]} />
             <View style={styles.header}>
                 <Image
                     source={logo}
