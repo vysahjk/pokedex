@@ -1,5 +1,5 @@
 import * as React from "react";
-import {createNavigationContainerRef, NavigationContainer} from "@react-navigation/native";
+import {NavigationContainer} from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from "./Components/Home/Home";
 import Dex from "./Components/Dex/Dex";
@@ -27,7 +27,7 @@ const App = () => {
                     <Root.Screen name="Home" component={Home} options={{ headerShown: false}}/>
                     <Root.Screen name="PokeDex" component={Dex} options={{ headerShown: false }}/>
                     <Root.Screen name="Details" component={Details} options={{ headerShown: false }} />
-                    {/*<Root.Screen name="Error" component={ErrorPage} options={{ headerShown: false }} />*/}
+                    <Root.Screen name="Error" component={ErrorPage} options={{ headerShown: false }} />
                 </Root.Navigator>
             </NavigationContainer>
         </ContextComponent>
